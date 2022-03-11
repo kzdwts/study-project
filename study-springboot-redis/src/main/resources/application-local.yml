@@ -1,0 +1,8 @@
+server:
+  port: 10001
+spring:
+  application:
+    name: study-springboot-redis
+  redis:
+    host: 192.168.10.137
+    port: 6379
