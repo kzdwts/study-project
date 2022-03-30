@@ -1,0 +1,22 @@
+server:
+  port: 8082
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.100.134:3306/flowable01?useSSL=false&serverTimezone=GMT%2B8&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true
+    username: root
+    password: 1024KangYong@MySQL
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 6000000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 18000000
+      connection-timeout: 300000
+      connection-test-query: SELECT 1
+
+flowable:
+  async-executor-activate: false # ??????job
+  database-schema-update: true # ?databaseSchemaUpdate???true??flowable???????????????????????????????
