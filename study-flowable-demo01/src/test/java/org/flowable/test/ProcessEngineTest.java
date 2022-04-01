@@ -1,4 +1,4 @@
-package com.bobo.flowable.test;
+package org.flowable.test;
 
 
 import org.flowable.engine.ProcessEngine;

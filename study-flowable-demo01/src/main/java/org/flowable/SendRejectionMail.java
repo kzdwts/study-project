@@ -1,4 +1,4 @@
-package com.bobo.flowable;
+package org.flowable;
 
 import org.flowable.engine.delegate.DelegateExecution;
 import org.flowable.engine.delegate.JavaDelegate;
@@ -19,7 +19,8 @@ public class SendRejectionMail implements JavaDelegate {
      * @author Kang Yong
      * @date 2022/4/1
      */
+    @Override
     public void execute(DelegateExecution execution) {
-        System.out.println("请假被拒绝，，，安心工作吧");
+        System.out.println("请假被拒绝，，，上课吧");
     }
 }
