@@ -24,12 +24,13 @@ public class ProcessEngineTest {
     @Test
     public void processEngine01() {
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
-                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?serverTimezone=UTC")
+                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?useSSL=false&serverTimezone=UTC&nullCatalogMeansCurrent=true")
                 .setJdbcUsername("root")
                 .setJdbcPassword("1024KangYong@MySQL")
                 .setJdbcDriver("com.mysql.cj.jdbc.Driver")
                 .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
 
         ProcessEngine processEngine = cfg.buildProcessEngine();
+        System.out.println("===SUCCESS===");
     }
 }
