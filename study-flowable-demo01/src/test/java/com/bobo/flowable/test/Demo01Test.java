@@ -214,7 +214,7 @@ public class Demo01Test {
     public void testQueryHistory() {
         // 配置数据库相关信息 获取 ProcessEngineConfiguration
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
-                .setJdbcUrl("jdbc:mysql://localhost:3306/flowable-learn2?serverTimezone=UTC&nullCatalogMeansCurrent=true")
+                .setJdbcUrl("jdbc:mysql://localhost:3306/flowable-learn1?serverTimezone=UTC&nullCatalogMeansCurrent=true")
                 .setJdbcUsername("root")
                 .setJdbcPassword("123456")
                 .setJdbcDriver("com.mysql.cj.jdbc.Driver")
