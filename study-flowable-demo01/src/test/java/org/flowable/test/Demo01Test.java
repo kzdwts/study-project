@@ -1,4 +1,4 @@
-package com.bobo.flowable.test;
+package org.flowable.test;
 
 import org.flowable.engine.*;
 import org.flowable.engine.history.HistoricActivityInstance;
@@ -35,7 +35,7 @@ public class Demo01Test {
     public void testDeploy() {
         // 配置数据库相关信息，获取ProcessEngineConfiguration
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
-                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?serverTimezone=UTC")
+                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?useSSL=false&serverTimezone=UTC&nullCatalogMeansCurrent=true&characterEncoding=utf-8")
                 .setJdbcUsername("root")
                 .setJdbcPassword("1024KangYong@MySQL")
                 .setJdbcDriver("com.mysql.cj.jdbc.Driver")
@@ -63,7 +63,7 @@ public class Demo01Test {
     public void testDeployQuery() {
         // 配置数据库相关信息，获取ProcessEngineConfiguration
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
-                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?serverTimezone=UTC")
+                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?useSSL=false&serverTimezone=UTC&nullCatalogMeansCurrent=true&characterEncoding=utf-8")
                 .setJdbcUsername("root")
                 .setJdbcPassword("1024KangYong@MySQL")
                 .setJdbcDriver("com.mysql.cj.jdbc.Driver")
@@ -75,7 +75,7 @@ public class Demo01Test {
 
         // 获取流程定义对象
         ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
-                .deploymentId("2501")
+                .deploymentId("1")
                 .singleResult();
 
         System.out.println("processDefinition.getId() = " + processDefinition.getId());
@@ -95,15 +95,13 @@ public class Demo01Test {
     public void testRunProcess() {
         // 配置数据库相关信息，获取ProcessEngineConfiguration
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
-                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?serverTimezone=UTC")
+                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?useSSL=false&serverTimezone=UTC&nullCatalogMeansCurrent=true&characterEncoding=utf-8")
                 .setJdbcUsername("root")
                 .setJdbcPassword("1024KangYong@MySQL")
                 .setJdbcDriver("com.mysql.cj.jdbc.Driver")
                 .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
         // 获取流程引擎对象
         ProcessEngine processEngine = cfg.buildProcessEngine();
-        // 部署流程 获取RepositoryService对象
-        RepositoryService repositoryService = processEngine.getRepositoryService();
 
         // 启动流程实例 通过RuntimeService对象
         RuntimeService runtimeService = processEngine.getRuntimeService();
@@ -131,7 +129,7 @@ public class Demo01Test {
     public void testQueryTask() {
         // 配置数据库相关信息，获取ProcessEngineConfiguration
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
-                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?serverTimezone=UTC")
+                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?useSSL=false&serverTimezone=UTC&nullCatalogMeansCurrent=true&characterEncoding=utf-8")
                 .setJdbcUsername("root")
                 .setJdbcPassword("1024KangYong@MySQL")
                 .setJdbcDriver("com.mysql.cj.jdbc.Driver")
@@ -140,7 +138,7 @@ public class Demo01Test {
         ProcessEngine processEngine = cfg.buildProcessEngine();
         TaskService taskService = processEngine.getTaskService();
         List<Task> list = taskService.createTaskQuery()
-                .processDefinitionKey("holidayRequestNew")
+                .processDefinitionKey("holidayRequest")
                 .taskAssignee("lisi")
                 .list();
 
@@ -162,7 +160,7 @@ public class Demo01Test {
     public void testCompleteTask() {
         // 配置数据库相关信息，获取ProcessEngineConfiguration
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
-                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?serverTimezone=UTC")
+                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?useSSL=false&serverTimezone=UTC&nullCatalogMeansCurrent=true&characterEncoding=utf-8")
                 .setJdbcUsername("root")
                 .setJdbcPassword("1024KangYong@MySQL")
                 .setJdbcDriver("com.mysql.cj.jdbc.Driver")
@@ -171,7 +169,7 @@ public class Demo01Test {
         ProcessEngine processEngine = cfg.buildProcessEngine();
         TaskService taskService = processEngine.getTaskService();
         Task task = taskService.createTaskQuery()
-                .processDefinitionKey("holidayRequestNew")
+                .processDefinitionKey("holidayRequest")
                 .taskAssignee("lisi")
                 .singleResult();
 
@@ -192,7 +190,7 @@ public class Demo01Test {
     public void testDeleteProcess() {
         // 配置数据库相关信息，获取ProcessEngineConfiguration
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
-                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?serverTimezone=UTC")
+                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?useSSL=false&serverTimezone=UTC&nullCatalogMeansCurrent=true&characterEncoding=utf-8")
                 .setJdbcUsername("root")
                 .setJdbcPassword("1024KangYong@MySQL")
                 .setJdbcDriver("com.mysql.cj.jdbc.Driver")
@@ -214,7 +212,7 @@ public class Demo01Test {
     public void testQueryHistory() {
         // 配置数据库相关信息 获取 ProcessEngineConfiguration
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
-                .setJdbcUrl("jdbc:mysql://localhost:3306/flowable-learn1?serverTimezone=UTC&nullCatalogMeansCurrent=true")
+                .setJdbcUrl("jdbc:mysql://192.168.100.134:3306/flowable-learn01?useSSL=false&serverTimezone=UTC&nullCatalogMeansCurrent=true&characterEncoding=utf-8")
                 .setJdbcUsername("root")
                 .setJdbcPassword("123456")
                 .setJdbcDriver("com.mysql.cj.jdbc.Driver")
