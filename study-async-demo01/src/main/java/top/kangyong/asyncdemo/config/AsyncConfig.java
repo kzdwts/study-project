@@ -12,6 +12,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @since 1.0.0
  */
 @EnableAsync
-@Configuration
+@Configuration // 如果放在配置类上面，这两个要同时存在才会起作用
 public class AsyncConfig {
 }
