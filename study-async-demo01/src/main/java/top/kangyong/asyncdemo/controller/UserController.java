@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import top.kangyong.asyncdemo.core.util.RespResult;
 import top.kangyong.asyncdemo.service.UserService;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 /**
  * 用户
  *
@@ -50,6 +55,29 @@ public class UserController {
         log.info("===Async===START===");
         this.userService.asyncUser();
         log.info("===Async===END===");
+        return RespResult.ok();
+    }
+
+    /**
+     * 异步1
+     *
+     * @return {@link RespResult< String>}
+     * @author Kang Yong
+     * @date 2022/4/7
+     */
+    @PostMapping("/autoAsyncUser1")
+    public RespResult<String> autoAsyncUser1() {
+        log.info("===异步===START===");
+
+        try {
+            Future<String> future = this.userService.autoAsyncUser1();
+            System.out.println("开始获取异步执行结果");
+            String str = future.get(10000, TimeUnit.SECONDS);
+            System.out.println(str);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        log.info("===异步===END===");
         return RespResult.ok();
     }
 }
