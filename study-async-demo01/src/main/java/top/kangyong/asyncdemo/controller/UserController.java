@@ -2,6 +2,7 @@ package top.kangyong.asyncdemo.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -73,6 +74,29 @@ public class UserController {
             Future<String> future = this.userService.autoAsyncUser1();
             System.out.println("开始获取异步执行结果");
             String str = future.get(10000, TimeUnit.SECONDS);
+            System.out.println(str);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        log.info("===异步===END===");
+        return RespResult.ok();
+    }
+
+    /**
+     * 异步2
+     *
+     * @return {@link RespResult< String>}
+     * @author Kang Yong
+     * @date 2022/4/7
+     */
+    @PostMapping("/autoAsyncUser2")
+    public RespResult<String> autoAsyncUser2() {
+        log.info("===异步===START===");
+
+        try {
+            AsyncResult<String> result = this.userService.autoAsyncUser2();
+            System.out.println("开始获取异步执行结果");
+            String str = result.get(1, TimeUnit.SECONDS);
             System.out.println(str);
         } catch (Exception e) {
             e.printStackTrace();

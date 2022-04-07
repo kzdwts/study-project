@@ -1,5 +1,7 @@
 package top.kangyong.asyncdemo.service;
 
+import org.springframework.scheduling.annotation.AsyncResult;
+
 import java.util.concurrent.Future;
 
 /**
@@ -35,4 +37,14 @@ public interface UserService {
      * @date 2022/4/7
      */
     Future<String> autoAsyncUser1();
+
+    /**
+     * 异步 更新用户，如果调用了回调方法 则变为同步
+     *
+     * @return {@link AsyncResult< String>}
+     * @author Kang Yong
+     * @date 2022/4/7
+     */
+    AsyncResult<String> autoAsyncUser2();
+
 }
