@@ -8,6 +8,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * test
@@ -28,8 +30,13 @@ public class MsgTemplatePropertiesTest {
         System.out.println(msgTemplateProperties);
 
         // 读取配置文件list
-        List<Map<String, String>> msgTemplateList = msgTemplateProperties.getMsgTemplateList();
+        List<MsgTemplateProperties.MsgTemplate> msgTemplateList = msgTemplateProperties.getMsgTemplateList();
         System.out.println(msgTemplateList.size());
+
+        Map<String, MsgTemplateProperties.MsgTemplate> templateMap = msgTemplateList.stream().collect(Collectors.toMap(MsgTemplateProperties.MsgTemplate::getWxAppId, Function.identity()));
+        MsgTemplateProperties.MsgTemplate msgTemplate = templateMap.get("123456");
+        System.out.println(msgTemplate);
+
     }
 
 }
