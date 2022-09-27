@@ -1,15 +1,12 @@
 package top.kangyong.springboot.property.config;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 配置
@@ -32,5 +29,10 @@ public class MsgTemplateProperties {
         private String opening;
         private String priceChanges;
         private String subscribe;
+    }
+
+    public MsgTemplate getMsgTemplateByWxAppId(String wxAppId) {
+        return this.msgTemplateList.stream().filter(bean -> wxAppId.equals(bean.getWxAppId()))
+                .findFirst().orElse(new MsgTemplate());
     }
 }
