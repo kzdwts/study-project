@@ -1,0 +1,17 @@
+server:
+  port: 10001
+spring:
+  application:
+    name: study-springboot-property
+study-property:
+    msg-template-list:
+      - wxAppId: 123456
+        opening: 1
+        priceChanges: 2
+        subscribe: 3
+      - wxAppId: 7890
+        opening: 4
+        priceChanges: 5
+        subscribe: 6
+
+
