@@ -1,6 +1,6 @@
 package top.kangyong.study.redis.service;
 
-import top.kangyong.study.redis.domain.SysArea;
+import top.kangyong.study.redis.domain.model.SysArea;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

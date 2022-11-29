@@ -2,22 +2,6 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.mapper.SysAreaMapper">
+<mapper namespace="top.kangyong.study.redis.mapper.SysAreaMapper">
 
-    <resultMap id="BaseResultMap" type="top.kangyong.study.redis.domain.SysArea">
-            <result property="id" column="id" jdbcType="INTEGER"/>
-            <result property="areaName" column="area_name" jdbcType="VARCHAR"/>
-            <result property="areaFullName" column="area_full_name" jdbcType="VARCHAR"/>
-            <result property="areaCode" column="area_code" jdbcType="INTEGER"/>
-            <result property="areaParentCode" column="area_parent_code" jdbcType="INTEGER"/>
-            <result property="areaTypeCode" column="area_type_code" jdbcType="INTEGER"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
-    </resultMap>
-
-    <sql id="Base_Column_List">
-        id,area_name,area_full_name,
-        area_code,area_parent_code,area_type_code,
-        create_time,modify_time
-    </sql>
 </mapper>

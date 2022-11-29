@@ -2,7 +2,7 @@ package top.kangyong.study.redis.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.cache.annotation.Cacheable;
-import top.kangyong.study.redis.domain.Brand;
+import top.kangyong.study.redis.domain.model.Brand;
 import top.kangyong.study.redis.service.BrandService;
 import top.kangyong.study.redis.mapper.BrandMapper;
 import org.springframework.stereotype.Service;

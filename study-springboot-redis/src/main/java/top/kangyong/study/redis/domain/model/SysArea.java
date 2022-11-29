@@ -1,4 +1,4 @@
-package top.kangyong.study.redis.domain;
+package top.kangyong.study.redis.domain.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;

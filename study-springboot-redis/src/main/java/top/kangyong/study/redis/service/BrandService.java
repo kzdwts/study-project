@@ -1,6 +1,6 @@
 package top.kangyong.study.redis.service;
 
-import top.kangyong.study.redis.domain.Brand;
+import top.kangyong.study.redis.domain.model.Brand;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

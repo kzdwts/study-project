@@ -3,7 +3,7 @@ package top.kangyong.study.redis.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.cache.annotation.Cacheable;
-import top.kangyong.study.redis.domain.SysArea;
+import top.kangyong.study.redis.domain.model.SysArea;
 import top.kangyong.study.redis.service.SysAreaService;
 import top.kangyong.study.redis.mapper.SysAreaMapper;
 import org.springframework.stereotype.Service;
