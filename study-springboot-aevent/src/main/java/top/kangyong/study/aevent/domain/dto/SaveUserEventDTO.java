@@ -29,4 +29,12 @@ public class SaveUserEventDTO extends ApplicationEvent {
         this.userId = userId;
         this.idNo = idNo;
     }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public String getIdNo() {
+        return idNo;
+    }
 }

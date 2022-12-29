@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import top.kangyong.study.aevent.domain.dto.SaveUserEventDTO;
 import top.kangyong.study.aevent.domain.model.User;
+import top.kangyong.study.aevent.mapper.UserMapper;
 import top.kangyong.study.aevent.service.UserService;
 
 /**
@@ -18,11 +19,24 @@ import top.kangyong.study.aevent.service.UserService;
 public class UserServiceImpl implements UserService {
 
     @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
     private ApplicationContext applicationContext;
 
     @Override
     public void updateById(User user) {
         System.out.println("开始更新用户:" + user.toString());
+
+        System.out.println("===发送事件===START===");
+        this.applicationContext.publishEvent(new SaveUserEventDTO(user, user.getId(), user.getIdNo()));
+        System.out.println("===发送事件===END===");
+    }
+
+    @Override
+    public void insert(User user) {
+        System.out.println("开始新增用户:" + user.toString());
+        this.userMapper.insert(user);
 
         System.out.println("===发送事件===START===");
         this.applicationContext.publishEvent(new SaveUserEventDTO(user, user.getId(), user.getIdNo()));

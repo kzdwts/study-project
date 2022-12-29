@@ -19,4 +19,13 @@ public interface UserService {
      * @date 2022/12/29
      */
     void updateById(User user);
+
+    /**
+     * 新增用户
+     *
+     * @param user {@link User}
+     * @author Kang Yong
+     * @date 2022/12/29
+     */
+    void insert(User user);
 }
