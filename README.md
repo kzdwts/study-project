@@ -25,3 +25,7 @@
 ### 04、study-springboot-property
 
 * 读取yml配置文件
+
+### 05、study-springboot-aevent
+
+* 事件功能测试

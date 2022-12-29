@@ -1,0 +1,15 @@
+server:
+  port: 10003
+spring:
+  application:
+    name: study-springboot-aevent
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.10.131:3306/db_aevent?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: xxx
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
