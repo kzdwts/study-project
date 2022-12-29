@@ -12,8 +12,9 @@ import org.springframework.context.annotation.ComponentScan;
  * @date 2022/12/29
  * @since 1.0.0
  */
+@ComponentScan(basePackages = {"top.kangyong.study.aevent.*"})
+@MapperScan(basePackages = {"top.kangyong.study.aevent.mapper"})
 @SpringBootApplication
-@MapperScan("top.kangyong.study.aevent.mapper")
 public class AeventApplication {
 
     public static void main(String[] args) {

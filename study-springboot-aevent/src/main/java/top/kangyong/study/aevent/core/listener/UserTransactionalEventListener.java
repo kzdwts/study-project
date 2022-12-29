@@ -1,6 +1,7 @@
 package top.kangyong.study.aevent.core.listener;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
@@ -16,7 +17,7 @@ import top.kangyong.study.aevent.service.UserDetailService;
  * @date 2022/12/29
  * @since 1.0.0
  */
-@Service
+@Component
 public class UserTransactionalEventListener {
 
     @Autowired

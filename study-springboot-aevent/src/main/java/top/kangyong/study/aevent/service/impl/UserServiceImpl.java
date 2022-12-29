@@ -3,6 +3,7 @@ package top.kangyong.study.aevent.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import top.kangyong.study.aevent.domain.dto.SaveUserEventDTO;
 import top.kangyong.study.aevent.domain.model.User;
 import top.kangyong.study.aevent.mapper.UserMapper;
@@ -33,6 +34,7 @@ public class UserServiceImpl implements UserService {
         System.out.println("===发送事件===END===");
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void insert(User user) {
         System.out.println("开始新增用户:" + user.toString());
