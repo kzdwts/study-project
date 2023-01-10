@@ -96,8 +96,12 @@ public class HelloController {
      * 2、配置bean SentinelResourceAspect
      * value 定义资源
      * blockHandler 设置 流控降级后的处理方法（默认该方法必须声明在同一个类中）
-     * 如果不想在同一个类中，设置blockHandlerClass
+     * 如果不想在同一个类中，设置blockHandlerClass 方法必须是静态的
      * fallback 当接口出现了异常，就可以交给发力了back指定的方法进行处理
+     *
+     * blockHandler 如果和 fallback 同时指定了，则 blockHandler 优先级更高
+     *
+     * exceptionsToIgnore 排除哪些异常不处理
      *
      * @param id {@link String}
      * @return {@link User}
@@ -105,9 +109,18 @@ public class HelloController {
      * @date 2023/1/10
      */
     @RequestMapping("/user")
-    @SentinelResource(value = USER_RESOURCE_NAME, /*blockHandlerClass = "",*/ blockHandler = "blockHandlerForGetUser")
+    @SentinelResource(value = USER_RESOURCE_NAME,
+            fallback = "fallbackForGetUser",
+            /*blockHandlerClass = "",*/
+            blockHandler = "blockHandlerForGetUser")
     public User getUser(String id) {
+        int i = 1 / 0;
         return new User("毛凯悦");
+    }
+
+    public User fallbackForGetUser(String id, Throwable e) {
+        e.printStackTrace();
+        return new User("出现异常");
     }
 
     /**
