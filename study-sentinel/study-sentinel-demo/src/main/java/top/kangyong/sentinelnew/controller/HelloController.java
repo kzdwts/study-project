@@ -3,6 +3,7 @@ package top.kangyong.sentinelnew.controller;
 import com.alibaba.csp.sentinel.Entry;
 import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.Tracer;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
@@ -10,6 +11,7 @@ import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import top.kangyong.sentinelnew.pojo.User;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -75,8 +77,56 @@ public class HelloController {
         rule.setCount(1);
         rules.add(rule);
 
+        // 通过@SentinelResource来定义资源，并配置降级和流控的处理方法
+        FlowRule rule2 = new FlowRule();
+        rule2.setResource(USER_RESOURCE_NAME);
+        rule2.setGrade(RuleConstant.FLOW_GRADE_QPS);
+        rule2.setCount(1);
+        rules.add(rule2);
+
         // 加载配置好的规则
         FlowRuleManager.loadRules(rules);
+    }
+
+    /**
+     * `@SentinelResource` 改善接口中资源定义和被流控降级后的处理方法
+     * <p>
+     * 怎么使用：
+     * 1、添加依赖 <artifactId>sentinel-annotation-aspectj</artifactId>
+     * 2、配置bean SentinelResourceAspect
+     * value 定义资源
+     * blockHandler 设置 流控降级后的处理方法（默认该方法必须声明在同一个类中）
+     * 如果不想在同一个类中，设置blockHandlerClass
+     * fallback 当接口出现了异常，就可以交给发力了back指定的方法进行处理
+     *
+     * @param id {@link String}
+     * @return {@link User}
+     * @author Kang Yong
+     * @date 2023/1/10
+     */
+    @RequestMapping("/user")
+    @SentinelResource(value = USER_RESOURCE_NAME, /*blockHandlerClass = "",*/ blockHandler = "blockHandlerForGetUser")
+    public User getUser(String id) {
+        return new User("毛凯悦");
+    }
+
+    /**
+     * 功能: TODO.
+     * <p>
+     * 注意：
+     * 1、一定要public
+     * 2、返回值一定要和原方法保证一致，包含原方法的参数
+     * 3、可以在参数最后添加BlockException 可以区分是什么规则的处理方法
+     *
+     * @param id {@link String}
+     * @param ex {@link BlockException}
+     * @return {@link User}
+     * @author Kang Yong
+     * @date 2023/1/10
+     */
+    public User blockHandlerForGetUser(String id, BlockException ex) {
+        ex.printStackTrace();
+        return new User("流控！！！");
     }
 
 }

@@ -1,6 +1,8 @@
 package top.kangyong.sentinelnew.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -12,5 +14,12 @@ import java.io.Serializable;
  * @since 1.0.0
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements Serializable {
+
+    /**
+     * 姓名
+     */
+    private String name;
 }
