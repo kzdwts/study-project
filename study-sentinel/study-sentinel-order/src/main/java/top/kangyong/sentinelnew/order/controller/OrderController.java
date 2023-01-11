@@ -5,6 +5,8 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * order
  *
@@ -28,7 +30,8 @@ public class OrderController {
 
     @RequestMapping("/order/flowThread")
     @SentinelResource(value = "flowThread", blockHandler = "flowBlockHandler")
-    public String flowThread() {
+    public String flowThread() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
         return "flowThread正常访问";
     }
 
