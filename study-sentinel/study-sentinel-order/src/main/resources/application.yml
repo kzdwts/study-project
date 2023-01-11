@@ -1,0 +1,9 @@
+server:
+  port: 10005
+spring:
+  application:
+    name: study-sentinel-order
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 192.168.10.131:8858
