@@ -46,8 +46,9 @@ public class MyBlockExceptionHandler implements BlockExceptionHandler {
 
         // 返回json数据
         response.setStatus(500);
-        response.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("utf-8");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+
         new ObjectMapper().writeValue(response.getWriter(), r);
     }
 

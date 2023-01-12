@@ -1,19 +1,23 @@
 package top.kangyong.sentinelnew.order.domain;
 
-import java.io.Serializable;
+import lombok.Data;
 
 /**
  * @author Kang Yong
  * @date 2023/1/12
  * @since 1.0.0
  */
-public class Result<T> implements Serializable {
+@Data
+public class Result<T> {
 
     private Integer code;
 
     private String msg;
 
     private T data;
+
+    public Result() {
+    }
 
     public Result(Integer code, String msg, T data) {
         this.code = code;
@@ -28,6 +32,10 @@ public class Result<T> implements Serializable {
 
     public static Result error(Integer code, String msg) {
         return new Result(code, msg);
+    }
+
+    public static Result success(Object data) {
+        return new Result(3001, "操作成功", data);
     }
 
 }
