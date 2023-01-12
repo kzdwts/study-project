@@ -32,6 +32,13 @@
             <version>2.2.5.RELEASE</version>
         </dependency>
 
+        <!--bean工具包-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 
 </project>
