@@ -18,10 +18,10 @@ import java.util.concurrent.TimeUnit;
 @RestController
 public class OrderController {
 
-    @RequestMapping("/order/add")
-    public String add() {
-        return "Hello World";
-    }
+//    @RequestMapping("/order/add")
+//    public String add() {
+//        return "Hello World";
+//    }
 
 
     //    @SentinelResource(value = "flow", blockHandler = "flowBlockHandler") 这里不使用了，使用继承BlockExceptionHandler，统一的拦截，如果需要特殊处理，才用这个注解
@@ -40,5 +40,16 @@ public class OrderController {
     public String flowBlockHandler(BlockException e) {
         e.printStackTrace();
         return "flow流控";
+    }
+
+    @RequestMapping("/order/add")
+    public Result add() {
+        System.out.println("下单成功");
+        return Result.success("生成订单");
+    }
+
+    @RequestMapping("/order/get")
+    public Result get() {
+        return Result.success("查询订单");
     }
 }
