@@ -7,3 +7,4 @@ spring:
     sentinel:
       transport:
         dashboard: 192.168.10.131:8858
+      web-context-unify: false # 默认是启动链路收敛，这里给放开

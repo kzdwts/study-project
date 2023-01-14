@@ -8,5 +8,6 @@ package top.kangyong.sentinelnew.order.service;
  * @since 1.0.0
  */
 public interface IOrderService {
-    String getUser();
+
+    String getUser(Integer id);
 }

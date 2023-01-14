@@ -64,12 +64,12 @@ public class OrderController {
     @RequestMapping("/order/test1")
     public Result test1() {
         System.out.println("test1执行了");
-        return Result.success(orderService.getUser());
+        return Result.success(orderService.getUser(1));
     }
 
     @RequestMapping("/order/test2")
     public Result test2() {
         System.out.println("test2执行了===");
-        return Result.success(orderService.getUser());
+        return Result.success(orderService.getUser(2));
     }
 }
