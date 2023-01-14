@@ -2,9 +2,11 @@ package top.kangyong.sentinelnew.order.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.kangyong.sentinelnew.order.domain.Result;
+import top.kangyong.sentinelnew.order.service.IOrderService;
 
 import java.util.concurrent.TimeUnit;
 
@@ -51,5 +53,23 @@ public class OrderController {
     @RequestMapping("/order/get")
     public Result get() {
         return Result.success("查询订单");
+    }
+
+
+    // 关联流控
+
+    @Autowired
+    private IOrderService orderService;
+
+    @RequestMapping("/order/test1")
+    public Result test1() {
+        System.out.println("test1执行了");
+        return Result.success(orderService.getUser());
+    }
+
+    @RequestMapping("/order/test2")
+    public Result test2() {
+        System.out.println("test2执行了===");
+        return Result.success(orderService.getUser());
     }
 }
