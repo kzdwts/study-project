@@ -17,7 +17,8 @@ public class StockController {
 
     @RequestMapping("/reduce")
     public String reduce() {
-        return "减库存成功";
+        String msg = "减库存成功";
+        return msg;
     }
 
 }
