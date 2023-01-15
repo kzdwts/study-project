@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2023/1/15
  * @since 1.0.0
  */
-@FeignClient(value = "study-sentinel-stock", path = "/stock")
+@FeignClient(value = "study-sentinel-stock", path = "/stock", fallback = StockFeignServiceFallback.class)
 public interface StockFeignService {
 
     @RequestMapping("/reduce")
