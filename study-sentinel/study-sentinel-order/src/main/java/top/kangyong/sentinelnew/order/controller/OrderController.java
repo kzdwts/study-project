@@ -72,4 +72,12 @@ public class OrderController {
         System.out.println("test2执行了===");
         return Result.success(orderService.getUser(2));
     }
+
+    // 异常比例 降级
+
+    @RequestMapping("/order/err")
+    public Result err() {
+        int i = 1 / 0;
+        return Result.success("Hello World, err");
+    }
 }
