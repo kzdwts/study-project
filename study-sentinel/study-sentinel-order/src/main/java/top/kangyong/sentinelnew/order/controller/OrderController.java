@@ -33,9 +33,9 @@ public class OrderController {
     }
 
     @RequestMapping("/order/flowThread")
-    @SentinelResource(value = "flowThread", blockHandler = "flowBlockHandler")
+//    @SentinelResource(value = "flowThread", blockHandler = "flowBlockHandler")
     public String flowThread() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(2);
         return "flowThread正常访问";
     }
 
