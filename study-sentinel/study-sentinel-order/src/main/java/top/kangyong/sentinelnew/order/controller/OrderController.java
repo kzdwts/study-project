@@ -3,6 +3,7 @@ package top.kangyong.sentinelnew.order.controller;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.kangyong.sentinelnew.order.domain.Result;
@@ -80,4 +81,18 @@ public class OrderController {
         int i = 1 / 0;
         return Result.success("Hello World, err");
     }
+
+    // 热点
+    @RequestMapping("/order/get/{id}")
+    @SentinelResource(value = "getById", blockHandler = "hotBlockHandler")
+    public Result getById(@PathVariable("id") Integer id) {
+        String msg = "正常访问";
+        System.out.println(msg);
+        return Result.success(msg);
+    }
+
+    public Result hotBlockHandler(Integer id, BlockException e) {
+        return Result.error(3002, "热点异常处理！！！");
+    }
+
 }
