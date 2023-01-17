@@ -1,0 +1,14 @@
+server:
+  port: 10008
+spring:
+  application:
+    name: study-sentinel-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.10.131:8848
+        username: nacos
+        password: kangyong
+    sentinel:
+      transport:
+        dashboard: 192.168.10.131:8858
