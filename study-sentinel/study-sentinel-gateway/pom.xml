@@ -32,6 +32,13 @@
             <version>2.2.5.RELEASE</version>
         </dependency>
 
+        <!--sentinel整合gateway-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel-gateway</artifactId>
+            <version>2.2.5.RELEASE</version>
+        </dependency>
+
         <!--sentinel启动器-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
