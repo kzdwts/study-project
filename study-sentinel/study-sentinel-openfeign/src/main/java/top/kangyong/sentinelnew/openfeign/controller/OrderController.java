@@ -27,6 +27,7 @@ public class OrderController {
         String s = stockFeignService.reduce();
 
         String r = "Hello Feign " + s;
+        System.out.println("r = " + r);
         return Result.success(r);
     }
 }

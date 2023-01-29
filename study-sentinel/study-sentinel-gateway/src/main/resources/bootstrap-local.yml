@@ -1,0 +1,16 @@
+server:
+  port: 10008
+spring:
+  application:
+    name: study-sentinel-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.10.131:8848
+        file-extension: yml
+        namespace: 0d88b3b4-c56f-4614-a455-1b947afb5083
+      discovery:
+        server-addr: 192.168.10.131:8848
+        namespace: 0d88b3b4-c56f-4614-a455-1b947afb5083
+        username: nacos
+        password: kangyong
