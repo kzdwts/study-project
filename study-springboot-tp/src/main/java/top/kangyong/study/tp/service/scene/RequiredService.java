@@ -9,6 +9,8 @@ package top.kangyong.study.tp.service.scene;
  */
 public interface RequiredService {
 
+//    场景一
+
     /**
      * 验证方法一：
      * <p>
@@ -35,4 +37,34 @@ public interface RequiredService {
      * @date 2023/2/13
      */
     void notransaction_required_required_exception();
+
+//    场景二
+
+    /**
+     * 验证方法一：
+     * <p>
+     * 数据库结果：“张三”，“李四”均未插入
+     * <p>
+     * 结果分析：外围方法开启事务，内部方法加入外围方法事务，外围方法回滚，内部方法也要回滚
+     *
+     * @author Kang Yong
+     * @date 2023/2/13
+     */
+    void transaction_exception_required_required();
+
+    /**
+     * 验证方法二：
+     * <p>
+     * 数据库结果：“张三”，“李四”均未插入
+     * <p>
+     * 结果分析：外围方法开启事务，内部方法加入外围方法事务，内部方法抛出异常回滚，外部方法感知异常致使整体事务回滚
+     *
+     * @author Kang Yong
+     * @date 2023/2/13
+     */
+    void transaction_required_required_exception();
+
+
+    void transaction_required_required_exception_try();
+
 }
