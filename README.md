@@ -29,3 +29,7 @@
 ### 05、study-springboot-aevent
 
 * 事件功能测试
+
+### 06、study-springboot-tp
+
+* Spring事务传播行为
