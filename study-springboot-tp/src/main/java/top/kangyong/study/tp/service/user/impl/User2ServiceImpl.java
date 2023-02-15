@@ -34,6 +34,22 @@ public class User2ServiceImpl extends ServiceImpl<User2Mapper, User2> implements
         System.out.println("User2ServiceImpl#addRequiredException 这里抛出异常，测试事务");
         throw new RuntimeException();
     }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Override
+    public void addRequiresNew(User2 user2) {
+        user2Mapper.insert(user2);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Override
+    public void addRequiresNewException(User2 user2) {
+        user2Mapper.insert(user2);
+
+        System.out.println("User2ServiceImpl#addRequiresNewException 这里抛出异常，测试事务");
+        throw new RuntimeException();
+    }
+
 }
 
 

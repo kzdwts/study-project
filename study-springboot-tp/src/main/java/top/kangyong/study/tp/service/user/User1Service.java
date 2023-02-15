@@ -19,4 +19,13 @@ public interface User1Service extends IService<User1> {
      */
     void addRequired(User1 user1);
 
+    /**
+     * 功能: 新增 （测试Propagation.REQUIRES_NEW）
+     *
+     * @param user1 {@link User1}
+     * @author Kang Yong
+     * @date 2023/2/15
+     */
+    void addRequiresNew(User1 user1);
+
 }

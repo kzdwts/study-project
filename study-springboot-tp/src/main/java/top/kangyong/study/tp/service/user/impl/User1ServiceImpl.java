@@ -26,6 +26,12 @@ public class User1ServiceImpl extends ServiceImpl<User1Mapper, User1> implements
         user1Mapper.insert(user1);
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Override
+    public void addRequiresNew(User1 user1) {
+        user1Mapper.insert(user1);
+    }
+
 }
 
 

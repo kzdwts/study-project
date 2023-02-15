@@ -1,7 +1,7 @@
 package top.kangyong.study.tp.service.user;
 
-import top.kangyong.study.tp.domain.User2;
 import com.baomidou.mybatisplus.extension.service.IService;
+import top.kangyong.study.tp.domain.User2;
 
 /**
  * @author KY
@@ -27,4 +27,23 @@ public interface User2Service extends IService<User2> {
      * @date 2023/2/13
      */
     void addRequiredException(User2 user2);
+
+    /**
+     * 功能: 新增（测试Propagation.REQUIRES_NEW）
+     *
+     * @param user2 {@link User2}
+     * @author Kang Yong
+     * @date 2023/2/15
+     */
+    void addRequiresNew(User2 user2);
+
+
+    /**
+     * 功能: 新增（测试Propagation.REQUIRES_NEW）
+     *
+     * @param user2 {@link User2}
+     * @author Kang Yong
+     * @date 2023/2/15
+     */
+    void addRequiresNewException(User2 user2);
 }
