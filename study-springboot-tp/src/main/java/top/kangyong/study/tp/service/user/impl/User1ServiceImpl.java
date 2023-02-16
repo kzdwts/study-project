@@ -32,6 +32,12 @@ public class User1ServiceImpl extends ServiceImpl<User1Mapper, User1> implements
         user1Mapper.insert(user1);
     }
 
+    @Transactional(propagation = Propagation.NESTED)
+    @Override
+    public void addNested(User1 user1) {
+        user1Mapper.insert(user1);
+    }
+
 }
 
 

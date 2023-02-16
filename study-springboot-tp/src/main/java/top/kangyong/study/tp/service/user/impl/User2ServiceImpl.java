@@ -50,6 +50,19 @@ public class User2ServiceImpl extends ServiceImpl<User2Mapper, User2> implements
         throw new RuntimeException();
     }
 
+    @Transactional(propagation = Propagation.NESTED)
+    @Override
+    public void addNested(User2 user2) {
+        user2Mapper.insert(user2);
+    }
+
+    @Transactional(propagation = Propagation.NESTED)
+    @Override
+    public void addNestedException(User2 user2) {
+        user2Mapper.insert(user2);
+        throw new RuntimeException();
+    }
+
 }
 
 

@@ -28,4 +28,13 @@ public interface User1Service extends IService<User1> {
      */
     void addRequiresNew(User1 user1);
 
+    /**
+     * 功能: 新增（测试Propagation.NESTED）
+     *
+     * @param user1 {@link User1}
+     * @author Kang Yong
+     * @date 2023/2/16
+     */
+    void addNested(User1 user1);
+
 }
