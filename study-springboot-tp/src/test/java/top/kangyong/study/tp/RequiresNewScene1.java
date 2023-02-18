@@ -1,5 +1,6 @@
 package top.kangyong.study.tp;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,10 +21,12 @@ public class RequiresNewScene1 {
     @Autowired
     private RequiresNewService requiresNewService;
 
+    @Test
     public void notransaction_exception_requiresNew_requiresNew() {
         requiresNewService.notransaction_exception_requiresNew_requiresNew();
     }
 
+    @Test
     public void notransaction_requiresNew_requiresNew_exception() {
         requiresNewService.notransaction_requiresNew_requiresNew_exception();
     }
