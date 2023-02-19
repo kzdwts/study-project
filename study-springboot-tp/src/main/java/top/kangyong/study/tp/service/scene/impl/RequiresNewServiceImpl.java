@@ -24,7 +24,9 @@ public class RequiresNewServiceImpl implements RequiresNewService {
     @Autowired
     private User2Service user2Service;
 
-//  场景一：外围方法没有开启事务
+//    场景一：外围方法未开启事务
+//    通过这两个方法我们证明了在外围方法未开启事务的情况下Propagation.REQUIRES_NEW修饰
+//    的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰
 
     /**
      * 验证方法一:
@@ -73,6 +75,8 @@ public class RequiresNewServiceImpl implements RequiresNewService {
 
 
 //    场景二：外围方法开启事务
+//    结论：在外围方法开启事务的情况下Propagation.REQUIRES_NEW修饰的内部方法依然会单独开启独立事务，
+//    且与外部方法事务也独立。内部方法之间、内部方法和外部方法事务均相互独立，互不干扰
 
     /**
      * 验证方法一：
@@ -104,6 +108,19 @@ public class RequiresNewServiceImpl implements RequiresNewService {
         throw new RuntimeException();
     }
 
+    /**
+     * 验证方法二：
+     * <p>
+     * 数据库结果：“张三”未插入，“李四”插入，“王五”未插入
+     * <p>
+     * 结果分析：外围方法开启事务，插入“张三”方法和外围方法一个事务，插入“李四”方法、插入“王五”方法分别
+     * 在独立的新建事务中。插入“王五”方法抛出异常，首先插入“王五”方法的事务被回滚，异常继续抛出被外围方法感知，
+     * 外围方法事务亦被回滚，故插入“张三”方法也被回滚
+     *
+     * @author Kang Yong
+     * @date 2023/2/19
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void transaction_required_requiresNew_requiresNew_exception() {
         User1 user1 = new User1();
@@ -120,6 +137,19 @@ public class RequiresNewServiceImpl implements RequiresNewService {
 
     }
 
+    /**
+     * 验证方法三：
+     * <p>
+     * 数据库结果：“张三”插入，“李四”插入，“王五”未插入
+     * <p>
+     * 结果分析：外围方法开启事务，插入“张三”方法和外围方法一个事务，插入“李四”方法、插入“王五”方法分别
+     * 在独立的新建事务中。插入“王五”方法抛出异常，首先插入“王五”方法的事务被回滚，异常被catch不会被外围方法感知，
+     * 外围方法事务不回滚，故插入“张三”方法插入成功
+     *
+     * @author Kang Yong
+     * @date 2023/2/19
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void transaction_required_requiresNew_requiresNew_exception_try() {
         User1 user1 = new User1();
