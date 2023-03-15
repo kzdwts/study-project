@@ -5,13 +5,13 @@ spring:
     name: study-springboot-redis
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://82.157.44.168:3306/sales_online?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-    username: admin
-    password: tsERDxJOxbSk775w
+    url: jdbc:mysql://192.168.10.131:3306/db_redis?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 1024KangYong@MySQL
   redis:
-    host: 82.157.44.168
+    host: 192.168.10.131
     port: 6379
-    password: VMoEXKYYAwb6ykzg
+    password: kangyong
 
 mybatis-plus:
   configuration:

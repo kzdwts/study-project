@@ -23,8 +23,12 @@ public class RedisKeyExpirationListener extends KeyExpirationEventMessageListene
 
     @Override
     public void onMessage(Message message, byte[] pattern) {
+        log.info("RedisKeyExpirationListener[onMessage]");
         String expiredKey = message.toString();
         log.info("失效key：{}", expiredKey);
+        String topic = new String(message.getChannel());
+        String content = new String(message.getBody());
+        System.out.println("接收到消息，主题：" + topic + "，内容：" + content);
 
         byte[] body = message.getBody();
         byte[] channel = message.getChannel();
