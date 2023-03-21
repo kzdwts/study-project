@@ -23,7 +23,7 @@ public class UserTransactionalEventListener {
     @Autowired
     private UserDetailService userDetailService;
 
-    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
+    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT, classes = {SaveUserEventDTO.class})
     public void userEventListener(SaveUserEventDTO eventDTO) {
         System.out.println("监听到用户数据变更：" + eventDTO.toString());
 
