@@ -38,8 +38,6 @@ public class User implements Serializable {
     /**
      * 出生日期
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date birthday;
 
     @TableField(exist = false)
