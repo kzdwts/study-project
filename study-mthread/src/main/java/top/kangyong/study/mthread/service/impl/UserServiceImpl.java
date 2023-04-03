@@ -15,6 +15,11 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User>  implements UserService{
 
     @Override
+    public void addUser(User user) {
+        this.save(user);
+    }
+
+    @Override
     public void checkBirthdayAndSendCongratulation() {
         /* 场景：(多线程案例)
          库里有n条数据，先查出数量，
@@ -25,6 +30,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>  implements U
 
 
     }
+
 }
 
 
