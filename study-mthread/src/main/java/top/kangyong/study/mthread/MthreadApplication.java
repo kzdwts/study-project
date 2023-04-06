@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @since 1.0.0
  */
 @MapperScan("top.kangyong.study.mthread.mapper")
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@SpringBootApplication
 public class MthreadApplication {
 
     public static void main(String[] args) {

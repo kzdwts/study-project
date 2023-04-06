@@ -37,10 +37,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
          每个线程取到数据后，执行自己的业务
          */
         Integer processNum = Runtime.getRuntime().availableProcessors();
+        System.out.println("processNum = " + processNum);
         ExecutorService pool = Executors.newFixedThreadPool(processNum);
 
         // 用户数量
         Integer userCount = this.getUserCount();
+        if (userCount == 0) {
+            log.info("暂无用户，退出");
+            return;
+        }
 
         for (int i = 0; i < processNum; i++) {
             Integer pageSize = calcPageSize(processNum, userCount);
