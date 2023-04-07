@@ -52,6 +52,7 @@ public class BirthdayCongratulationHolder implements Runnable {
         qw.lambda().between(User::getId, begin, end);
         List<User> userList = this.userMapper.selectList(qw);
         if (CollectionUtils.isEmpty(userList)) {
+            System.out.println("未查询到今天生日的用户，退出");
             return;
         }
 

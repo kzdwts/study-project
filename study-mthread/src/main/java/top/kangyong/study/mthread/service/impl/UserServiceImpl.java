@@ -55,7 +55,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
         System.out.println("开启线程数：processNum = " + processNum);
         System.out.println("all thread submit");
-        pool.shutdown();
+//        pool.shutdown();
     }
 
     /**
