@@ -33,11 +33,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         /* 场景：(多线程案例)
          库里有n条数据，先查出数量，
          这里用线程池启动10个线程，计算每个线程需要处理的数据量，
-         写一个算法，计算起止位置（LIMIT 100, 10）
+         写一个算法，计算起止位置（id BETWEEN 100 AND 10, 因为id是自增可以这么做）
          每个线程取到数据后，执行自己的业务
          */
         Integer processNum = Runtime.getRuntime().availableProcessors();
-        System.out.println("processNum = " + processNum);
         ExecutorService pool = Executors.newFixedThreadPool(processNum);
 
         // 用户数量
@@ -48,11 +47,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
 
         for (int i = 0; i < processNum; i++) {
-            Integer pageSize = calcPageSize(processNum, userCount);
+//            Integer pageSize = calcPageSize(processNum, userCount);
             Integer begin = calcBegin(i, processNum, userCount);
-            pool.submit(new BirthdayCongratulationHolder(begin, pageSize));
+            Integer end = calcEnd(i, processNum, userCount);
+            pool.submit(new BirthdayCongratulationHolder(begin, end));
         }
 
+        System.out.println("开启线程数：processNum = " + processNum);
         System.out.println("all thread submit");
         pool.shutdown();
     }
