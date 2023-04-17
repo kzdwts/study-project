@@ -17,6 +17,7 @@
     lrange key 0 -1
     lpop key
   ```
+* redis做消息队列测试  
 
 ### 03、study-springboot-dep
 
