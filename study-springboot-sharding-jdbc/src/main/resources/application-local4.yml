@@ -1,0 +1,39 @@
+server:
+  port: 10007
+spring:
+  application:
+    name: study-springboot-sharding-jdbc
+  shardingsphere:
+    # 配置数据源具体内容
+    datasource:
+      names: ds1,ds2
+      ds1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.10.131:3306/sharding_sphere?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+        username: root
+        password: 1024KangYong@MySQL
+      ds2:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.10.132:3306/sharding_sphere?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+        username: root
+        password: 1024KangYong@MySQL
+    # 配置公共表
+    sharding:
+      broadcast-tables: dict_order_type
+      tables:
+        dict_order_type:
+          # 指定orders表里主键id生成策略
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+
+    props:
+      sql:
+        # 打开SQL输出日志
+        show: true
+
+# 整合mybatis
+mybatis:
+  type-aliases-package: top.kangyong.sbsj.mapper

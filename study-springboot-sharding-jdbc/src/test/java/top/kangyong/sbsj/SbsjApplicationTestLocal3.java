@@ -10,7 +10,7 @@ import top.kangyong.sbsj.domain.entity.Customer;
 import top.kangyong.sbsj.mapper.CustomerMapper;
 
 /**
- * 测试 水平分库
+ * 测试 sharding-jdbc实现垂直分库
  *
  * @author Kang Yong
  * @date 2023/4/21
