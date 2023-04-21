@@ -19,7 +19,7 @@ public class Orders implements Serializable {
     /**
      * id
      */
-    private Integer id;
+    private Long id;
     /**
      * 订单类型：
      */

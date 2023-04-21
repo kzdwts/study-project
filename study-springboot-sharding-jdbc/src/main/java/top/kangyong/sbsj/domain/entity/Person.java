@@ -6,7 +6,7 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
- * 客户
+ * person
  *
  * @author Kang Yong
  * @date 2023/4/21
@@ -14,8 +14,9 @@ import java.io.Serializable;
  */
 @Data
 @ToString
-public class Customer implements Serializable {
+public class Person implements Serializable {
 
     private Long id;
     private String name;
+
 }

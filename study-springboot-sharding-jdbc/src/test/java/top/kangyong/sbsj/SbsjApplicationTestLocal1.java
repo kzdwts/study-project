@@ -30,7 +30,7 @@ public class SbsjApplicationTestLocal1 {
     public void addOrders() {
         for (int i = 1; i < 10; i++) {
             Orders orders = new Orders();
-            orders.setId(i);
+            orders.setId(i * 1L);
             orders.setOrderType(i);
             orders.setCustomerId(i);
             orders.setAmount(1000.0 * i);

@@ -31,7 +31,7 @@ public class SbsjApplicationTestLocal2 {
     public void addOrdersDB() {
         for (int i = 1; i < 10; i++) {
             Orders orders = new Orders();
-            orders.setId(i);
+            orders.setId(i * 1L);
             orders.setOrderType(i);
             orders.setCustomerId(new Random().nextInt(10));
             orders.setAmount(1000.0 * i);
@@ -47,7 +47,7 @@ public class SbsjApplicationTestLocal2 {
     public void queryOrdersDB() {
         Orders orders = new Orders();
         orders.setCustomerId(7);
-        orders.setId(7);
+        orders.setId(7 * 1L);
 
         Orders o = ordersMapper.selectOneDB(orders);
 

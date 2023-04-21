@@ -25,7 +25,7 @@ public class SbsjApplicationTestLocal4 {
     private DictOrderTypeMapper dictOrderTypeMapper;
 
     @Test
-    public void addOrdersDB() {
+    public void insertDictOrderType() {
         for (int i = 1; i < 10; i++) {
             DictOrderType dictOrderType = new DictOrderType();
             dictOrderType.setOrderType("orderType" + i);

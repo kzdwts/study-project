@@ -28,7 +28,7 @@ public class SbsjApplicationTestLocal3 {
     public void addOrdersDB() {
         for (int i = 1; i < 10; i++) {
             Customer customer = new Customer();
-            customer.setId(i);
+            customer.setId(i * 1L);
             customer.setName("zs" + i);
 
             customerMapper.insertCustomer(customer);

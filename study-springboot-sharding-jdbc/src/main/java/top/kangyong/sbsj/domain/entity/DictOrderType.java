@@ -16,7 +16,7 @@ import java.io.Serializable;
 @ToString
 public class DictOrderType implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String orderType;
 
 }
