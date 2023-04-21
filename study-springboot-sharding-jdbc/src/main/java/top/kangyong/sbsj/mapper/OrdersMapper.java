@@ -22,7 +22,7 @@ public interface OrdersMapper {
      * @author Kang Yong
      * @date 2023/4/21
      */
-    @Insert("INSERT INTO orders(id, order_type, customer_id, amount) VALUES(#{id}, #{orderType}, #{customerId}, #{amount})")
+    @Insert("INSERT INTO orders(id, order_type, customer_id, amount, create_time) VALUES(#{id}, #{orderType}, #{customerId}, #{amount}, NOW())")
     void insert(Orders orders);
 
     /**
@@ -38,7 +38,8 @@ public interface OrdersMapper {
             @Result(property = "id", column = "id"),
             @Result(property = "orderType", column = "order_type"),
             @Result(property = "customerId", column = "customer_id"),
-            @Result(property = "amount", column = "amount")
+            @Result(property = "amount", column = "amount"),
+            @Result(property = "createTime", column = "create_time")
     })
     Orders selectOne(Integer id);
 

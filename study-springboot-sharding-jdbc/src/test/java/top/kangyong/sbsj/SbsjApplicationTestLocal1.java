@@ -28,7 +28,7 @@ public class SbsjApplicationTestLocal1 {
 
     @Test
     public void addOrders() {
-        for (int i = 1; i < 10; i++) {
+        for (int i = 10; i < 20; i++) {
             Orders orders = new Orders();
             orders.setId(i * 1L);
             orders.setOrderType(i);
@@ -44,7 +44,7 @@ public class SbsjApplicationTestLocal1 {
 
     @Test
     public void queryOrders() {
-        Orders orders = ordersMapper.selectOne(1);
+        Orders orders = ordersMapper.selectOne(11);
         System.out.println("orders = " + orders);
     }
 
