@@ -4,7 +4,7 @@
 
 ### 01、study-async-demo01
 
-* @Async
+* @Async 异步
 * @EnableAsync
                                                           
 ### 02、study-springboot-redis
@@ -34,3 +34,11 @@
 ### 06、study-springboot-tp
 
 * Spring事务传播行为
+
+### 07、study-sentinel
+
+* 熔断降级 限流组件`sentinel`
+
+### 08、study-springboot-sharding-jdbc
+
+* `sharding-jdbc`使用
