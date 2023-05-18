@@ -41,4 +41,12 @@
 
 ### 08、study-springboot-sharding-jdbc
 
+* 分库分表
 * `sharding-jdbc`使用
+
+### 009、study-springboot-retry
+
+* 重试机制
+* `spring-retry` 使用
+    * `@Retryable`
+    * `@Recover`
