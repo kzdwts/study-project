@@ -2,6 +2,8 @@ package top.kangyong.retry;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.retry.annotation.Retryable;
 
 /**
  * start
@@ -10,7 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2023/5/18
  * @since 1.0.0
  */
-@SpringBootApplication
+@Retryable
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class ServerRetryApplication {
 
     public static void main(String[] args) {
