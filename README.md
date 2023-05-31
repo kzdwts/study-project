@@ -44,7 +44,7 @@
 * 分库分表
 * `sharding-jdbc`使用
 
-### 009、study-springboot-retry
+### 009、study-springboot-retry 10012
 
 * 重试机制
 * `spring-retry` 使用

@@ -18,4 +18,5 @@ public interface UserService {
      * @date 2023/5/20
      */
     Integer getUserCount(Integer code) throws Exception;
+
 }

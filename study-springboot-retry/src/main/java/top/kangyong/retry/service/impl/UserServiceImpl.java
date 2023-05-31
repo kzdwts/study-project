@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
     @Recover
     public Integer getUserCountRecover(Exception e, Integer code) {
         System.out.println("回调方法执行！！！");
-
+        System.out.println("code = " + code);
         System.out.println("异常信息：" + e.getMessage());
         return 400;
     }
