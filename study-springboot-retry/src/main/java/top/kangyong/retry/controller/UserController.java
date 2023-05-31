@@ -28,8 +28,15 @@ public class UserController {
      * @date 2023/5/20
      */
     @GetMapping("/user/count/{code}")
-    public Integer getUserCount(@PathVariable(value = "code") Integer code) throws Exception {
-        return userService.getUserCount(code);
+    public Integer getUserCount(@PathVariable(value = "code") Integer code) {
+        // 这里捕获或者抛出都不影响重试
+        try {
+            return userService.getUserCount(code);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 1;
     }
 
 }
