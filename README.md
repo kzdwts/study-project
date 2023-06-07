@@ -44,9 +44,18 @@
 * 分库分表
 * `sharding-jdbc`使用
 
-### 009、study-springboot-retry 10012
+### 09、study-springboot-retry 10012
 
 * 重试机制
 * `spring-retry` 使用
     * `@Retryable`
     * `@Recover`
+
+### 10、xxl-job
+ 
+* 常见任务调度方案
+    * Timer
+    * ExectorService
+    * Spring @schedule
+    * quartz
+    * [xxljob](https://github.com/xuxueli/xxl-job)
