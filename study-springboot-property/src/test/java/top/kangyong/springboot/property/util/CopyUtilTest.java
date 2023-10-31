@@ -33,7 +33,7 @@ public class CopyUtilTest {
     @Test
     public void testCopy2() {
         Car car1 = new Car(1, "大众", 18, null, new Date());
-        Car car2 = new Car(null, "大众", null, "白色", null);
+        Car car2 = new Car(null, "吉利", null, "白色", null);
 
         BeanUtil.copyProperties(car1, car2, CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
         System.out.println("car1 = " + car1);
