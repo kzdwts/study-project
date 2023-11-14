@@ -6,7 +6,13 @@ spring:
   sharding-sphere:
     # 配置数据源具体内容
     datasource:
-      names: ds1,ds2
+      names: ds0,ds1,ds2
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://172.16.51.75:6033/satisfaction_report?serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+        username: ${spring.datasource.username}
+        password: ${spring.datasource.password}
       ds1:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,6 +27,7 @@ spring:
         password: ${spring.datasource.password}
     # 指定数据库的分布情况，配置表在那个数据库中，表名称是什么
     sharding:
+      default-data-source-name: ds0
       tables:
         # questionnaire库
         ds2:
@@ -38,6 +45,12 @@ spring:
           tableStrategy:
             hint:
               algorithm-class-name: ${sharding.hint-year}
+        sp_survey_plan:
+          actual-data-nodes: ds2.sp_survey_plan
+          table-strategy:
+            standard:
+              sharding-column: id
+              precise-algorithm-class-name: org.apache.shardingsphere.api.algorithm.sharding.PreciseShardingAlgorithm
         # report库
         report_ov_general_data:
           actual-data-nodes: ds1.report_ov_general_data_$->${sharding.nodes}
@@ -63,7 +76,7 @@ spring:
             inline:
               sharding-column: statistics_year
               algorithm-expression: report_ov_project_data_${statistics_year}
-      default-data-source-name: ds1
+
     props:
       sql:
         # 打开SQL输出日志
