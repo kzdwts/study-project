@@ -1,0 +1,14 @@
+server:
+  port: 10014
+spring:
+  application:
+    name: study-easy-es-springboot
+easy-es:
+  address: 172.16.56.254:37238
+  username: elastic #es用户名,若无则删去此行配置
+  password: elastic #es密码,若无则删去此行配置
+  global-config:
+    i-kun-mode: false
+    process-index-mode: smoothly # 索引处理模式,smoothly:平滑模式, not_smoothly:非平滑模式, manual:手动模式
+    db-config:
+      index-prefix: dev_ # 索引前缀,可用于区分环境  默认为空 用法和MP的tablePrefix一样的作用和用法
