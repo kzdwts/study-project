@@ -1,6 +1,7 @@
 package top.kangyong.springboot.property.config;
 
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ import java.util.Map;
  * @since 1.0.0
  */
 @Data
+@ToString
 @Component
 @Configuration
 @ConfigurationProperties(prefix = "study-property")
