@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
- * TODO description .
+ * 初始化minio bean
  *
  * @author Kang Yong
  * @date 2024/5/21
