@@ -47,12 +47,12 @@ public class MinioConfigTest {
             minioClient.uploadObject(
                     UploadObjectArgs.builder()
                             .bucket("leadnews")
-                            .object("list.html")
-                            .filename("E:\\logs\\list.html")
+                            .object("804.jpg")
+                            .filename("E:\\temp\\804.jpg")
                             .build());
             System.out.println(
-                    "'E:\\logs\\list.html' is successfully uploaded as "
-                            + "object 'list.html' to bucket 'leadnews'.");
+                    "'E:\\temp\\804.jpg' is successfully uploaded as "
+                            + "object '804.jpg' to bucket 'leadnews'.");
         } catch (MinioException e) {
             System.out.println("Error occurred: " + e);
             System.out.println("HTTP trace: " + e.httpTrace());

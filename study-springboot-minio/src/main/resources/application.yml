@@ -5,7 +5,7 @@ spring:
     name: study-springboot-minio
 
 minio:
-  endpoint: http://121.37.42.142:9090 # web端访问端口是9090
+  endpoint: http://121.37.42.142:9000 # web端访问端口是9090
   bucket_name: leadnews
   access_key: MinioAdmin
   secret_key: 1024KangYong@Minio
