@@ -87,7 +87,7 @@ public class TbStuServiceTest {
     }
 
     /**
-     * 目前分页有问题 TODO
+     * 分页
      *
      * @author Kang Yong
      * @date 2024/5/26
@@ -98,6 +98,11 @@ public class TbStuServiceTest {
         stuService.page(page, null);
 
         System.out.println("JSONUtil.toJsonStr(page) = " + JSONUtil.toJsonStr(page));
+    }
+
+    @Test
+    public void pageHelper() {
+
     }
 
 }
