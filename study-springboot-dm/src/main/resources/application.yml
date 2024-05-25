@@ -1,0 +1,20 @@
+server:
+  port: 10016
+spring:
+  application:
+    name: study-springboot-dm
+  datasource:
+    driver-class-name: dm.jdbc.driver.DmDriver
+    url: jdbc:dm://121.37.42.142:30236/DMDEMO?useSSL=false&serverTimezone=UTC
+    username: SYSDBA
+    password: SYSDBA001
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      schema: DMDEMO
+      id-type: assign_id
+
