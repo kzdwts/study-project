@@ -23,25 +23,50 @@ public class DataProcessor {
     private static final ExecutorService executorService = Executors.newFixedThreadPool(10); // 创建固定大小的线程池
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-        List<String> dataList = generateData(17000000); // 假设有17000000条数据需要处理
+        // 假设有17000000条数据需要处理
+        List<String> dataList = generateData(17000000);
         List<List<String>> tempDataList = ListUtils.splitList(dataList, 1000);
         // 开始投递
         int i = 0;
         for (List<String> list : tempDataList) {
             i++;
             System.out.println("===START处理第i = " + i + "批数据");
-            dealGroupData(list);
+            // 两种写法
+            dealGroupData1(list);
             System.out.println("===END处理第i = " + i + "批数据");
         }
 
     }
 
-    private static void dealGroupData(List<String> list) throws ExecutionException, InterruptedException {
+    private static void dealGroupData1(List<String> list) throws ExecutionException, InterruptedException {
         System.out.println("===正在处理数据数据," + JSON.toJSONString(list));
 
         List<CompletableFuture<Void>> futures = new ArrayList<>();
         for (String s : list) {
             CompletableFuture<Void> future = CompletableFuture.runAsync(() -> processSingle(s), executorService);
+            futures.add(future);
+        }
+        // 等待所有异步任务完成
+        CompletableFuture<Void> allOf = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
+        allOf.join();
+
+        System.out.println("===已结束处理数据数据," + JSON.toJSONString(list));
+    }
+
+    private static void dealGroupData2(List<String> list) {
+        System.out.println("===正在处理数据数据," + JSON.toJSONString(list));
+
+        List<CompletableFuture<Void>> futures = new ArrayList<>();
+        for (String s : list) {
+            CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+                try {
+                    processSingle(s);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+
+                }
+            }, executorService);
             futures.add(future);
         }
         // 等待所有异步任务完成
