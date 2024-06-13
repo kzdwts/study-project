@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kangyong.springboot.mpt.mapper.ApArticleMapper">
+
+    <!--当前映射文件开启二级缓存-->
+    <cache flushInterval="5000" eviction="LRU"/>
+
+    <select id="getArticlePage" resultType="com.kangyong.springboot.mpt.domain.vo.ArticleVO">
+        select aa.id,
+               aa.title,
+               aa.author_name,
+               aa.channel_name,
+               aa.flag,
+               aac.content
+        from
+            ap_article aa
+            left join ap_article_content aac on aa.id = aac.article_id
+        where
+            1=1
+            <if test="id != null">
+                AND aa.id=#{id}
+            </if>
+            <if test="flag != null" >
+                AND aa.flag = #{flag}
+            </if>
+            <if test="title != null and title != ''" >
+                AND aa.title like concat('%', #{title}, '%')
+            </if>
+            <if test="authorName != null and authorName != ''" >
+                AND aa.author_name like concat('%', #{authorName}, '%')
+            </if>
+            <if test="content != null and content != ''">
+                AND aac.content like concat('%', #{content}, '%')
+            </if>
+    </select>
+</mapper>

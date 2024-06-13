@@ -59,3 +59,5 @@
     * Spring @schedule
     * quartz
     * [xxljob](https://github.com/xuxueli/xxl-job)
+
+### 11、mybatis二级缓存
