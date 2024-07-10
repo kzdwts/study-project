@@ -1,0 +1,11 @@
+server:
+  port: 10021
+spring:
+  application:
+    name: study-springcloud-alibaba-ai-demo
+  cloud:
+    ai:
+      tongyi:
+        chat:
+          options:
+            api-key: sk-a3d73b1709bf4a178c28ed7c8b3b5axx
